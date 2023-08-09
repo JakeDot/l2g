@@ -299,6 +299,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         debug_values($values);
     }
 
+    if (isset($_FILES['findsHtmlFile']) && $_FILES['findsHtmlFile']['error'] === UPLOAD_ERR_OK) {
+        $values['findsHtml'] = file_get_contents($_FILES['findsHtmlFile']['tmp_name']);
+
+        if(preg_match('/<a.*class="username".*title="(.*)">/msU', $values['findsHtml'], $matches) === 1) {
+            $values['username'] = $matches[1];
+            $file = $dataDir . '/' . $values['username'] . '.html';
+            move_uploaded_file($_FILES['findsHtmlFile']['tmp_name'], $file);
+        }
+    } else if (array_key_exists('username',$values) && !empty($values['username']) && file_exists($file = $dataDir . '/' . $values['username'] . '.html') && filemtime($file) > time() - CACHE_LIFE_TIME_IN_SECONDS) {
+        $values['findsHtml'] = file_get_contents($file);
+    }
+
     if (! $errors) {
         $cookieValues = $values;
         setcookie($cookieName, json_encode($cookieValues), time() + 999999);
