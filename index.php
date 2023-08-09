@@ -188,6 +188,7 @@ $linearTypes = [
     'mark' => $LANG['LINEAR_TYPE_MARK'],
     'corrected' => $LANG['LINEAR_TYPE_CORRECTED'],
     'ignore' => $LANG['LINEAR_TYPE_IGNORE'],
+    'emoji' => $LANG['LINEAR_TYPE_EMOJI'],
 ];
 $outputFormats = [
     'zippedgpx' => $LANG['OUTPUT_ZIPPED_GPX'],
@@ -316,6 +317,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ownersToSkip = explode("\n", $ownerText);
         $ownersToSkip = array_map('trim', $ownersToSkip);
         $ownersToSkip = array_unique($ownersToSkip);
+
+        $finds = [];
+
+        if ($values['findsHtml'] !== '') {
+            preg_match_all('/<li data-adv-id="([0-9a-z-]*)" class="deletable"(.*)<span class="cache-title">(.*)<\/span>/msU', $values['findsHtml'], $matches);
+            $finds = array_unique($matches[1]);
+            foreach ($matches[1] as $idx => $cacheId) {
+                $foundTitle = html_entity_decode(trim($matches[3][$idx]));
+                // @see user notes at https://www.php.net/manual/de/function.html-entity-decode.php
+                $foundTitle = preg_replace_callback("/(&#[0-9]+;)/", function ($m) {
+                    return mb_convert_encoding($m[1], "UTF-8", "HTML-ENTITIES");
+                }, $foundTitle);
+                $finds[$cacheId][] = $foundTitle;
+            }
+        }
 
         switch ($values['outputFormat']) {
             case 'zippedgpx':
