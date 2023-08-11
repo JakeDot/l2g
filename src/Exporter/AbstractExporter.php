@@ -57,6 +57,11 @@ abstract class AbstractExporter
         return true;
     }
 
+    protected function isFound(array $wpt): bool
+    {
+        return $wpt['IsComplete'];
+    }
+
     protected function getStageForDisplay(int $stage, array $cache): string
     {
         return str_pad((string) $stage, count($cache['GeocacheSummaries']) >= 10 ? 2 : 1, '0', STR_PAD_LEFT);

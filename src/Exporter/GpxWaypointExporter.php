@@ -4,6 +4,11 @@ namespace App\Exporter;
 
 class GpxWaypointExporter extends GpxExporter
 {
+    protected function foundAll(array $cache): bool
+    {
+        return $cache['IsComplete'];
+    }
+
     protected function getCacheDescription(array $cache, array $values): string
     {
         $gccodes = [];
@@ -90,6 +95,11 @@ class GpxWaypointExporter extends GpxExporter
         foreach ($fetchedLabs as $fetchedCache) {
             $cache = $this->getFileCache($fetchedCache);
             if (! $this->includeCache($cache, $values, $ownersToSkip)) {
+                continue;
+            }
+
+            $found = $this->foundAll($cache);
+            if ($found && ! $values['includeFinds']) {
                 continue;
             }
 

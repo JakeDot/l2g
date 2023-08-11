@@ -23,7 +23,8 @@ class CacheturDotNoExporter extends AbstractExporter
                     continue;
                 }
 
-                if ($wpt['IsComplete'] && !in_array('0', $values['completionStatuses'])) {
+                $found = $this->isFound($wpt);
+                if ($found && ! $values['includeFinds']) {
                     $stage++;
                     continue;
                 }

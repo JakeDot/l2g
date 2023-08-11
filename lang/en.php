@@ -54,7 +54,7 @@ $LANG['LABEL_INCLUDE_QUESTION'] = 'Include Waypoint question in Cache descriptio
 $LANG['LABEL_INCLUDE_DESCRIPTION'] = 'Include description of the Waypoint in Cache description';
 $LANG['LABEL_INCLUDE_CACHE_DESCRIPTION'] = 'Include the description of the Adventure Lab in the Cache description';
 $LANG['LABEL_EXCLUDE_OWNER'] = 'Exclude Owner name (one per Line)';
-$LANG['LABEL_USERGUID'] = "Calling user's public GUID";
+$LANG['LABEL_USERGUID'] = "Calling user's public GUID (required for the 3 options below to work)";
 $LANG['LABEL_HINT_USER_GUID'] = '
     Go to <a href="https://www.geocaching.com/find/default.aspx" target="_blank">https://www.geocaching.com/find/default.aspx</a> and look up your own username to find this. 
     The GUID is included at the end of the URL of the resulting page. (...?guid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx)';

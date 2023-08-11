@@ -21,7 +21,7 @@
 $LANG['INVALID_COORDINATES'] = 'Ungültiges Koordinatenformat.';
 $LANG['INVALID_RADIUS_HIGH'] = 'Der Radius darf nicht größer als 20.000 km sein.';
 $LANG['INVALID_RADIUS_LOW'] = 'Der Radius nicht kleiner als 1 km sein.';
-$LANG['INVALID_GUID'] = 'GUID darf nur die Buchstaben a-f, die Ziffern 0-9 und Minus (-) enthalten';
+$LANG['INVALID_GUID'] = 'GUID darf nur Buchstaben a-f, Ziffern 0-9 und Bindestrich (-) enthalten';
 $LANG['TAG_LINEAR'] = 'linear';
 $LANG['HEADER_QUESTION'] = 'Frage';
 $LANG['HEADER_QUESTION_TYPE'] = 'Art der Frage';
@@ -54,13 +54,13 @@ $LANG['LABEL_INCLUDE_QUESTION'] = 'Frage zur Station in Beschreibung einfügen';
 $LANG['LABEL_INCLUDE_DESCRIPTION'] = 'Beschreibung der Station in Cache Beschreibung einfügen';
 $LANG['LABEL_INCLUDE_CACHE_DESCRIPTION'] = 'Beschreibung des Adventure Labs in Cache Beschreibung einfügen';
 $LANG['LABEL_EXCLUDE_OWNER'] = 'Owner Name ausschließen (ein Name pro Zeile)';
-$LANG['LABEL_USERGUID'] = "Öffentliche GUID für den API-Abruf";
+$LANG['LABEL_USERGUID'] = "Öffentliche GUID des Benutzers (benötigt für die 3 Optionen unten)";
 $LANG['LABEL_HINT_USER_GUID'] = '
-    Rufe die Seite <a href="https://www.geocaching.com/find/default.aspx" target="_blank">https://www.geocaching.com/find/default.aspx</a> auf und suche nach deinem Benutzername. 
-    Die GUID findest du am Ende der URL nach der Suche. (...?guid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx)';
-$LANG['LABEL_INCLUDE_FOUND'] = 'Komplett abgeschlossene Labs einschließen';
-$LANG['LABEL_INCLUDE_PARTIAL'] = 'Teilweise abgeschlossene Labs einschließen';
-$LANG['LABEL_INCLUDE_UNFOUND'] = 'Nicht begonnene Labs einschließen';
+    Gehe zu <a href="https://www.geocaching.com/find/default.aspx" target="_blank">https://www.geocaching.com/find/default.aspx</a> und suche nach deinem eigenen Benutzernamen um die GUID zu finden. 
+    Die GUID steht am Ende der URL der geöffneten Seite.';
+$LANG['LABEL_INCLUDE_FOUND'] = 'Komplett beendete Adventures einschließen';
+$LANG['LABEL_INCLUDE_PARTIAL'] = 'Teilweise beendete Adventures einschließen';
+$LANG['LABEL_INCLUDE_UNFOUND'] = 'Nicht begonnene Adventures einschließen';
 $LANG['LABEL_DOWNLOAD'] = 'Download';
 $LANG['LABEL_HINT_DOWNLOAD'] = 'Das kann eine Weile dauern. Bitte habe Geduld und klicke nur ein mal.';
 $LANG['NO_CACHES_FOUND'] = '<p>Ooops, an den Koordinaten wurden keine Caches gefunden.</p><p><a href="/lab2gpx/">zurück</a></p>';
