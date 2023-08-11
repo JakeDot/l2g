@@ -299,18 +299,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         debug_values($values);
     }
 
-    if (isset($_FILES['findsHtmlFile']) && $_FILES['findsHtmlFile']['error'] === UPLOAD_ERR_OK) {
-        $values['findsHtml'] = file_get_contents($_FILES['findsHtmlFile']['tmp_name']);
-
-        if(preg_match('/<a.*class="username".*title="(.*)">/msU', $values['findsHtml'], $matches) === 1) {
-            $values['username'] = $matches[1];
-            $file = $dataDir . '/' . $values['username'] . '.html';
-            move_uploaded_file($_FILES['findsHtmlFile']['tmp_name'], $file);
-        }
-    } else if (array_key_exists('username',$values) && !empty($values['username']) && file_exists($file = $dataDir . '/' . $values['username'] . '.html') && filemtime($file) > time() - CACHE_LIFE_TIME_IN_SECONDS) {
-        $values['findsHtml'] = file_get_contents($file);
-    }
-
     if (! $errors) {
         $cookieValues = $values;
         setcookie($cookieName, json_encode($cookieValues), time() + 999999);
@@ -330,21 +318,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ownersToSkip = explode("\n", $ownerText);
         $ownersToSkip = array_map('trim', $ownersToSkip);
         $ownersToSkip = array_unique($ownersToSkip);
-
-        $finds = [];
-
-        if ($values['findsHtml'] !== '') {
-            preg_match_all('/<li data-adv-id="([0-9a-z-]*)" class="deletable"(.*)<span class="cache-title">(.*)<\/span>/msU', $values['findsHtml'], $matches);
-            $finds = array_unique($matches[1]);
-            foreach ($matches[1] as $idx => $cacheId) {
-                $foundTitle = html_entity_decode(trim($matches[3][$idx]));
-                // @see user notes at https://www.php.net/manual/de/function.html-entity-decode.php
-                $foundTitle = preg_replace_callback("/(&#[0-9]+;)/", function ($m) {
-                    return mb_convert_encoding($m[1], "UTF-8", "HTML-ENTITIES");
-                }, $foundTitle);
-                $finds[$cacheId][] = $foundTitle;
-            }
-        }
 
         switch ($values['outputFormat']) {
             case 'zippedgpx':
