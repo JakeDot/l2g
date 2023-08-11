@@ -51,6 +51,7 @@ $LANG['LABEL_LIMIT'] = 'Max number of Adventures (0 = no limit. WARNING: the dow
 $LANG['LABEL_CACHE_TYPE'] = 'Cache Type';
 $LANG['LABEL_HINT_CACHE_TYPE'] = 'Garmin GPS devices do not support Adventure Labs. You probably want to export them as virtual caches.';
 $LANG['LABEL_INCLUDE_QUESTION'] = 'Include Waypoint question in Cache description';
+$LANG['LABEL_INCLUDE_GEOFENCING'] = 'Include geofencing distance in Cache description';	
 $LANG['LABEL_INCLUDE_DESCRIPTION'] = 'Include description of the Waypoint in Cache description';
 $LANG['LABEL_INCLUDE_CACHE_DESCRIPTION'] = 'Include the description of the Adventure Lab in the Cache description';
 $LANG['LABEL_EXCLUDE_OWNER'] = 'Exclude Owner name (one per Line)';
