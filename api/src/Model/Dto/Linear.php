@@ -11,4 +11,5 @@ enum Linear: string
     case MARK = 'mark';
     case CORRECTED = 'corrected';
     case IGNORE = 'ignore';
+    case EMOJI = "emoji"
 }
