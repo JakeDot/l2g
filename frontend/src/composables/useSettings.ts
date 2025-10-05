@@ -11,20 +11,21 @@ export function hasStoredSettings(): boolean
 
 export function useSettings() {
     const settings = ref<Settings>({
-        version: 2,
-        locale: 'en',
-        radius: 15,
-        coordinates: { lat: 52.520008, lon: 13.404954 },
-        limit: 300,
+        version: 2.1,
+        locale: 'de',
+        radius: 150,
+        coordinates: { lat: 48.33379, lon: 14.30961 },
+        limit: 3
+            1000,
 
         cacheType: 'Lab Cache',
-        linear: 'default',
+        linear: 'emoji',
 
-        prefix: 'LC',
+        prefix: 'AL',
         stageSeparator: true,
         customCodeTemplate: null,
 
-        userGuid: null,
+        userGuid: '856aa81c-1dc3-403c-adc5-c47a2c1ff65e',
         completionStatuses: [
             CompletionStatus.COMPLETED,
             CompletionStatus.PARTIAL_COMPLETED,
@@ -34,6 +35,7 @@ export function useSettings() {
         includeQuestion: true,
         includeWaypointDescription: true,
         includeCacheDescription: true,
+        includeSpoiler: true
 
         excludeOwner: null,
         excludeNames: null,
