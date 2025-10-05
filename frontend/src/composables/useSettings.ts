@@ -15,8 +15,7 @@ export function useSettings() {
         locale: 'de',
         radius: 150,
         coordinates: { lat: 48.33379, lon: 14.30961 },
-        limit: 3
-            1000,
+        limit: 1000,
 
         cacheType: 'Lab Cache',
         linear: 'emoji',
